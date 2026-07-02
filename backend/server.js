@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
@@ -5,23 +7,24 @@ const multer = require("multer");
 const XLSX = require("xlsx");
 const bcrypt = require("bcrypt");
 
+
 const upload = multer({ dest: "uploads/" });
 
 const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
   }),
 );
 
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "outstaff_db",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME || "outstaff_db",
 });
 
 db.connect((err) => {
@@ -1557,6 +1560,8 @@ app.get("/admin/all-logs/:id", (req, res) => {
 
 /* ================= SERVER ================= */
 
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
