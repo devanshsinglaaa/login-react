@@ -1,218 +1,495 @@
-# 🚀 Production Management System (Full Stack)
+# 🚀 Production Management System - Dockerized Deployment
 
-> A modern, scalable **Production & Workforce Management System** built using **React (Vite), Node.js, Express, and MySQL** with role-based access control and analytics dashboard.
+A production-ready **Full Stack Production & Workforce Management System** containerized using **Docker** and orchestrated with **Docker Compose**.
 
----
-
-## Live Pictures (UI)
-![LOGIN_REACT_IMG](/screenshots/ls_01.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_02.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_03.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_04.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_05.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_06.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_07.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_08.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_09.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_10.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_11.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_12.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_13.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_14.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_15.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_16.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_17.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_18.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_19.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_20.png)
-
-![LOGIN_REACT_IMG](/screenshots/ls_21.png)
-
-## ✨ Live Features
-
-🔐 **Authentication & Authorization**
-- Role-based access (Admin / User)
-- Permission system (Add, Edit, Delete, View, Print)
-- Session timeout handling
-
-📊 **Smart Dashboard**
-- Production analytics
-- Revenue insights
-- Employee & Vendor stats
-- Graphs & charts (visual insights)
-
-📦 **Production Management**
-- Daily production entry
-- Edit/Delete production
-- Bulk upload via Excel/CSV
-
-👨‍💼 **Master Management**
-- Employee Master
-- Vendor / Contractor Master
-- Item Master
-- Group Master
-- Product Process Management
-
-📈 **Advanced Reports**
-- Item Wise Report
-- Employee Wise Report
-- Vendor Wise Report
-- Salary Report
-- Export to Excel
-
-🛠 **Admin Controls**
-- Manage Users
-- Assign granular permissions
-- View login activity logs
+This project demonstrates how to deploy a real-world React + Node.js + MySQL application using Docker with multi-container architecture, custom networking, persistent storage, health checks, environment variables, and Nginx.
 
 ---
 
-## 🧠 Tech Stack
+# 📌 Project Overview
 
-### 💻 Frontend
-- React.js (Vite)
+This application is designed for managing production workflows, employees, vendors, products, and reporting within a manufacturing environment.
+
+The objective of this repository is **not application development**, but demonstrating **production-grade containerization and deployment practices** using Docker.
+
+---
+
+# 🏗 Architecture
+
+```
+
+                     Browser
+                        │
+                        ▼
+                  Nginx (Frontend)
+                        │
+        ┌───────────────┴────────────────┐
+        │                                │
+        ▼                                ▼
+ React (Vite Build)             Express Backend
+                                        │
+                                        ▼
+                                 MySQL Database
+                              (Persistent Volume)
+
+```
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React.js
+- Vite
 - Tailwind CSS
-- React Router DOM
 - Axios
+- React Router
 
-### ⚙️ Backend
+## Backend
+
 - Node.js
 - Express.js
+- MySQL2
+- JWT Authentication
+- Multer
+- Bcrypt
 
-### 🗄 Database
-- MySQL
+## Database
+
+- MySQL 8.4
+
+## DevOps
+
+- Docker
+- Docker Compose
+- Nginx
+- Docker Networks
+- Docker Volumes
+- Health Checks
+- Environment Variables
 
 ---
 
-## 📁 Project Structure
+# 📂 Project Structure
 
+```
 
-LOGIN_REACT/
+login-react/
 │
 ├── backend/
-│ ├── uploads/
+│ ├── Dockerfile
 │ ├── server.js
 │ ├── package.json
 │
 ├── outstaff-app/
-│ ├── public/
+│ ├── Dockerfile
+│ ├── nginx.conf
 │ ├── src/
-│ │ ├── assets/
-│ │ ├── components/
-│ │ ├── config/
-│ │ ├── hooks/
-│ │ ├── pages/
-│ │ ├── App.jsx
-│ │ ├── index.css
-│ │
-│ ├── index.html
+│ ├── public/
 │ ├── package.json
+│
+├── database/
+│ └── outstaff_db.sql
+│
+├── docker-compose.yml
 │
 └── README.md
 
+```
 
 ---
 
-## ⚙️ Setup Instructions
+# 🐳 Docker Architecture
 
-### 1️⃣ Clone Repo
+The application consists of **three containers**.
+
+| Container | Technology | Purpose |
+|------------|------------|----------|
+| Frontend | Nginx | Serves React Production Build |
+| Backend | Node.js | REST APIs |
+| Database | MySQL 8.4 | Stores Application Data |
+
+All containers communicate over a custom Docker network.
+
+---
+
+# ⚙ Docker Features Implemented
+
+✅ Multi-container deployment
+
+✅ Docker Compose orchestration
+
+✅ Custom Docker Network
+
+✅ Persistent MySQL Volume
+
+✅ Database auto initialization
+
+✅ Environment Variables
+
+✅ Health Checks
+
+✅ Container Dependencies
+
+✅ Nginx Static File Hosting
+
+✅ React SPA Routing Support
+
+✅ Automatic Database Import
+
+---
+
+# 📦 Docker Compose Services
+
+## Frontend
+
+- Built using multi-stage Docker build
+- React production build
+- Served using Nginx
+- SPA routing enabled
+- Runs on
+
+```
+
+http://localhost:3007
+
+```
+
+---
+
+## Backend
+
+Node.js Express API Server
+
+Runs on
+
+```
+
+http://localhost:5000
+
+```
+
+Uses environment variables for
+
+- Database Host
+- Database User
+- Password
+- Database Name
+- Client URL
+
+---
+
+## Database
+
+MySQL 8.4
+
+Features
+
+- Persistent Docker Volume
+- Automatic SQL Import
+- Health Checks
+- Database Initialization
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/production-management-system.git
+git clone https://github.com/yourusername/production-management-system.git
+
 cd production-management-system
-2️⃣ Backend Setup
-cd backend
-npm install
+```
 
-Create .env file:
+---
 
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=outstaff_db
+## Start Application
 
-Run backend:
+```bash
+docker compose up --build -d
+```
 
-node server.js
-3️⃣ Frontend Setup
-cd outstaff-app
-npm install
-npm run dev
+---
 
-Open:
+## Verify Running Containers
 
-http://localhost:5173
-📊 Excel Upload Format
-employee_code,item_code,qty
-EMP001,1001,25
-EMP002,1002,30
-🔥 Key Highlights
-Clean modern UI with Tailwind
-Fully modular architecture
-Scalable backend structure
-Real-world business use case
-Admin + User separation
-Optimized data handling
-🚀 Future Improvements
-JWT Authentication
-Pagination & Server-side filtering
-Docker Deployment
-AWS EC2 + Nginx Hosting
-Real-time updates (WebSockets)
-👨‍💻 Author
+```bash
+docker ps
+```
 
-Devansh Singla
+Expected
 
-💼 Full Stack Developer (MERN)
-🎨 UI/UX Enthusiast
-🚀 Passionate about real-world scalable systems
-⭐ Show Your Support
+```
+production_frontend
+production_backend
+production_mysql
+```
 
-If you like this project:
+---
 
-👉 Star this repository
-👉 Share it on LinkedIn
-👉 Use it in your portfolio
+## Stop Containers
 
-📬 +91-9877817998
-📧 devanshsinglaa@gmail.com
-💼 LinkedIn: (https://www.linkedin.com/in/devansh-singla/)
+```bash
+docker compose down
+```
 
+---
 
+## Remove Containers and Volumes
 
-# React + Vite
+```bash
+docker compose down -v
+```
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# 🌐 Application URLs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Frontend
 
-## React Compiler
+```
+http://localhost:3007
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Backend
 
-## Expanding the ESLint configuration
+```
+http://localhost:5000
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Database
+
+```
+localhost:3306
+```
+
+---
+
+# 🗄 Database
+
+The database is automatically created using
+
+```
+database/outstaff_db.sql
+```
+
+during the first Docker Compose startup.
+
+Persistent storage is provided using Docker Volumes.
+
+---
+
+# 🔧 Environment Variables
+
+Backend
+
+| Variable | Description |
+|------------|------------|
+| PORT | Backend Port |
+| DB_HOST | MySQL Container |
+| DB_USER | Database User |
+| DB_PASSWORD | Database Password |
+| DB_NAME | Database Name |
+| CLIENT_URL | Allowed Frontend Origin |
+
+---
+
+# 🌍 Docker Network
+
+A custom Docker bridge network connects all services.
+
+```
+production_network
+```
+
+This allows communication using container names.
+
+Example
+
+```
+Backend → mysql
+```
+
+instead of
+
+```
+localhost
+```
+
+---
+
+# 📁 Persistent Storage
+
+Database persistence is achieved using
+
+```
+mysql_data
+```
+
+Docker Volume.
+
+Application data remains intact even if containers are recreated.
+
+---
+
+# 🔍 Health Check
+
+The MySQL container uses
+
+```yaml
+healthcheck:
+  test: ["CMD","mysqladmin","ping","-h","localhost","-proot123"]
+```
+
+The backend waits until the database becomes healthy before starting.
+
+---
+
+# 🔐 Security
+
+- Environment Variables
+- Password Hashing using Bcrypt
+- CORS Configuration
+- JWT Authentication
+- Docker Network Isolation
+
+---
+
+# 🧪 Deployment Workflow
+
+1. Clone Repository
+
+2. Build Images
+
+```
+docker compose build
+```
+
+3. Start Containers
+
+```
+docker compose up -d
+```
+
+4. Verify Containers
+
+```
+docker ps
+```
+
+5. Access Application
+
+```
+http://localhost:3007
+```
+
+---
+
+# 🛠 Troubleshooting
+
+## Check Running Containers
+
+```
+docker ps
+```
+
+---
+
+## Backend Logs
+
+```
+docker logs production_backend
+```
+
+---
+
+## Frontend Logs
+
+```
+docker logs production_frontend
+```
+
+---
+
+## MySQL Logs
+
+```
+docker logs production_mysql
+```
+
+---
+
+## Enter MySQL Container
+
+```
+docker exec -it production_mysql mysql -uroot -p
+```
+
+---
+
+## Restart Services
+
+```
+docker compose restart
+```
+
+---
+
+# 📚 DevOps Concepts Demonstrated
+
+- Docker Images
+- Multi-stage Builds
+- Docker Compose
+- Container Networking
+- Docker Volumes
+- Environment Variables
+- Health Checks
+- Nginx Reverse Proxy
+- React SPA Deployment
+- Backend Containerization
+- Database Containerization
+- Production Deployment
+- Application Troubleshooting
+- Container Debugging
+
+---
+
+# 📈 Future Improvements
+
+- Reverse Proxy API Routing (/api)
+- HTTPS using Let's Encrypt
+- GitHub Actions CI/CD
+- Docker Hub Image Publishing
+- Kubernetes Deployment
+- AWS EC2 Deployment
+- Nginx SSL Termination
+- Load Balancer
+- Monitoring using Prometheus & Grafana
+
+---
+
+# 👨‍💻 Author
+
+**Devansh Singla**
+
+MCA Student | DevOps Enthusiast | Full Stack Developer
+
+GitHub: https://github.com/yourusername
+
+LinkedIn: https://linkedin.com/in/devansh-singla
+
+---
+
+# ⭐ Support
+
+If you found this project useful,
+
+⭐ Star the repository
+
+🍴 Fork the repository
+
+💼 Connect with me on LinkedIn
+
+🚀 Happy Learning!
