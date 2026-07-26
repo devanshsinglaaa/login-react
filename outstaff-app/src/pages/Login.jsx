@@ -67,7 +67,7 @@ export default function Login() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 tracking-wide">
-            Outstaff
+            Outstaff - By DevanshDevOps
           </h1>
           <p className="text-gray-500 mt-2">
             Welcome back! Please login.

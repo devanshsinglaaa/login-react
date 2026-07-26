@@ -54,3 +54,5 @@ jobs:
           docker compose pull
           docker compose up -d --force-recreate
 
+# Let us see how this pipeline works
+
