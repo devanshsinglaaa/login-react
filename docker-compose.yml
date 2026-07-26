@@ -27,7 +27,7 @@ services:
       - production_network
 
   backend:
-    image: devanshsinglaaa/login-react-backend:latest
+    image: devopsdevansh/login-react-backend:latest
 
     container_name: production_backend
 
@@ -52,7 +52,7 @@ services:
       - production_network
 
   frontend:
-    image: devanshsinglaaa/login-react-frontend:latest
+    image: devopsdevansh/login-react-frontend:latest
 
     container_name: production_frontend
 
