@@ -13,7 +13,7 @@ export default function Logs() {
   }, []);
 
   const fetchUsers = async () => {
-    const res = await axios.get("http://localhost:5000/admin/users");
+    const res = await axios.get("http://3.89.255.32:5000/admin/users");
     setUsers(res.data);
   };
 
@@ -22,7 +22,7 @@ export default function Logs() {
     setSelectedUser(user);
 
     const res = await axios.get(
-      `http://localhost:5000/admin/user-logs/${user.id}`
+      `http://3.89.255.32:5000/admin/user-logs/${user.id}`
     );
 
     setLogs(res.data);

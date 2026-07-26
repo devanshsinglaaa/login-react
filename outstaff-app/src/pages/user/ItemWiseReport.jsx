@@ -16,7 +16,7 @@ export default function ItemWiseReport() {
   }, []);
 
   const loadItems = async () => {
-    const res = await axios.get("http://localhost:5000/items-all");
+    const res = await axios.get("http://3.89.255.32:5000/items-all");
     setItems(res.data);
   };
 
@@ -30,7 +30,7 @@ export default function ItemWiseReport() {
 
     try {
       const res = await axios.get(
-        "http://localhost:5000/report/item-wise",
+        "http://3.89.255.32:5000/report/item-wise",
         {
           params: {
             item_code: itemCode,

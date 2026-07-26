@@ -50,7 +50,7 @@ export default function DailyProductionEntry({ mode }) {
   const loadByDate = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/production-by-date/${date}`,
+        `http://3.89.255.32:5000/production-by-date/${date}`,
       );
 
       if (!res.data || res.data.length === 0) {
@@ -87,7 +87,7 @@ export default function DailyProductionEntry({ mode }) {
       // 🔹 AUTO FETCH EMPLOYEE
       if (field === "employee_code" && value) {
         const res = await axios.get(
-          `http://localhost:5000/employee-by-code/${value}`,
+          `http://3.89.255.32:5000/employee-by-code/${value}`,
         );
 
         if (res.data) {
@@ -100,7 +100,7 @@ export default function DailyProductionEntry({ mode }) {
       // 🔹 AUTO FETCH ITEM
       if (field === "item_code" && value) {
         const res = await axios.get(
-          `http://localhost:5000/item-by-code/${value}`,
+          `http://3.89.255.32:5000/item-by-code/${value}`,
         );
 
         if (res.data) {
@@ -139,7 +139,7 @@ export default function DailyProductionEntry({ mode }) {
       return;
     }
 
-    await axios.post("http://localhost:5000/save-production", {
+    await axios.post("http://3.89.255.32:5000/save-production", {
       production_date: date,
       rows: filteredRows,
     });
@@ -161,7 +161,7 @@ export default function DailyProductionEntry({ mode }) {
       return;
     }
 
-    await axios.put("http://localhost:5000/update-production", {
+    await axios.put("http://3.89.255.32:5000/update-production", {
       rows: updatedRows,
     });
 
@@ -177,12 +177,12 @@ export default function DailyProductionEntry({ mode }) {
     setSearch("");
 
     if (type === "employee") {
-      const res = await axios.get("http://localhost:5000/employees-all");
+      const res = await axios.get("http://3.89.255.32:5000/employees-all");
       setModalData(res.data);
     }
 
     if (type === "item") {
-      const res = await axios.get("http://localhost:5000/items-all");
+      const res = await axios.get("http://3.89.255.32:5000/items-all");
       setModalData(res.data);
     }
 

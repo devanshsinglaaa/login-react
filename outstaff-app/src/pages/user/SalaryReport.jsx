@@ -16,17 +16,17 @@ export default function SalaryReport() {
   }, []);
 
   const fetchVendors = async () => {
-    const res = await axios.get("http://localhost:5000/vendors");
+    const res = await axios.get("http://3.89.255.32:5000/vendors");
     setVendors(res.data);
   };
 
   const fetchEmployees = async () => {
-    const res = await axios.get("http://localhost:5000/employees-all");
+    const res = await axios.get("http://3.89.255.32:5000/employees-all");
     setEmployees(res.data);
   };
 
   const viewReport = async () => {
-    const res = await axios.get("http://localhost:5000/report/salary", {
+    const res = await axios.get("http://3.89.255.32:5000/report/salary", {
       params: {
         type,
         vendor_id: vendorId,

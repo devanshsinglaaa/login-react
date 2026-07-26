@@ -14,7 +14,7 @@ export default function AllPunches() {
 
   const fetchLogs = async () => {
     const res = await axios.get(
-      `http://localhost:5000/admin/all-logs/${id}`
+      `http://3.89.255.32:5000/admin/all-logs/${id}`
     );
     setLogs(res.data);
   };

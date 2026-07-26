@@ -19,7 +19,7 @@ export default function EmployeeWiseReport() {
   }, []);
 
   const loadEmployees = async () => {
-    const res = await axios.get("http://localhost:5000/employees-all");
+    const res = await axios.get("http://3.89.255.32:5000/employees-all");
     setEmployees(res.data);
   };
 
@@ -33,7 +33,7 @@ export default function EmployeeWiseReport() {
     setLoading(true);
 
     const res = await axios.get(
-      "http://localhost:5000/report/employee-wise",
+      "http://3.89.255.32:5000/report/employee-wise",
       {
         params: {
           employee_code: employeeCode,

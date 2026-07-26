@@ -48,14 +48,14 @@ export default function EmployeeMaster() {
   }, []);
 
   const fetchEmployees = async () => {
-    const res = await axios.get("http://localhost:5000/employees");
+    const res = await axios.get("http://3.89.255.32:5000/employees");
     setEmployees(res.data);
   };
 
   const fetchDropdowns = async () => {
-    const dep = await axios.get("http://localhost:5000/departments");
-    const des = await axios.get("http://localhost:5000/designations");
-    const ven = await axios.get("http://localhost:5000/vendors");
+    const dep = await axios.get("http://3.89.255.32:5000/departments");
+    const des = await axios.get("http://3.89.255.32:5000/designations");
+    const ven = await axios.get("http://3.89.255.32:5000/vendors");
 
     setDepartments(dep.data);
     setDesignations(des.data);
@@ -71,11 +71,11 @@ export default function EmployeeMaster() {
 
     if (editData) {
       await axios.put(
-        `http://localhost:5000/update-employee/${editData.employee_id}`,
+        `http://3.89.255.32:5000/update-employee/${editData.employee_id}`,
         form
       );
     } else {
-      await axios.post("http://localhost:5000/add-employee", form);
+      await axios.post("http://3.89.255.32:5000/add-employee", form);
     }
 
     resetForm();
@@ -85,7 +85,7 @@ export default function EmployeeMaster() {
   /* ================= DELETE ================= */
   const handleDelete = async (id) => {
     if (window.confirm("Delete this employee?")) {
-      await axios.delete(`http://localhost:5000/delete-employee/${id}`);
+      await axios.delete(`http://3.89.255.32:5000/delete-employee/${id}`);
       fetchEmployees();
     }
   };

@@ -49,7 +49,7 @@ function UserDashboard() {
 
   const fetchDashboard = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/dashboard-summary");
+      const res = await axios.get("http://3.89.255.32:5000/dashboard-summary");
       setData(res.data);
     } catch (err) {
       console.error("Dashboard Error:", err);

@@ -26,7 +26,7 @@ export default function UploadProduction() {
       setMessage(null);
 
       await axios.post(
-        "http://localhost:5000/upload-production",
+        "http://3.89.255.32:5000/upload-production",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

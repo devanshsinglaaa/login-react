@@ -61,7 +61,7 @@ node server.js
 
 Server will run on:
 
-http://localhost:5000
+http://3.89.255.32:5000
 💻 4. Frontend Setup
 cd outstaff-app
 npm install

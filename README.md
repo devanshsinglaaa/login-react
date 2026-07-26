@@ -166,7 +166,7 @@ Runs on
 
 ```
 
-http://localhost:5000
+http://3.89.255.32:5000
 
 ```
 
@@ -256,7 +256,7 @@ http://localhost:3007
 Backend
 
 ```
-http://localhost:5000
+http://3.89.255.32:5000
 ```
 
 Database

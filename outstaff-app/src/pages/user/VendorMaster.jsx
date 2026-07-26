@@ -48,7 +48,7 @@ export default function VendorMaster() {
   }, []);
 
   const fetchVendors = async () => {
-    const res = await axios.get("http://localhost:5000/vendors");
+    const res = await axios.get("http://3.89.255.32:5000/vendors");
     setVendors(res.data);
   };
 
@@ -61,11 +61,11 @@ export default function VendorMaster() {
 
     if (editData) {
       await axios.put(
-        `http://localhost:5000/update-vendor/${editData.vendor_id}`,
+        `http://3.89.255.32:5000/update-vendor/${editData.vendor_id}`,
         form,
       );
     } else {
-      await axios.post("http://localhost:5000/add-vendor", form);
+      await axios.post("http://3.89.255.32:5000/add-vendor", form);
     }
 
     resetForm();
@@ -75,7 +75,7 @@ export default function VendorMaster() {
   /* ================= DELETE ================= */
   const handleDelete = async (id) => {
     if (window.confirm("Delete this vendor?")) {
-      await axios.delete(`http://localhost:5000/delete-vendor/${id}`);
+      await axios.delete(`http://3.89.255.32:5000/delete-vendor/${id}`);
       fetchVendors();
     }
   };

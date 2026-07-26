@@ -37,7 +37,7 @@ export default function AdminDashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin-stats");
+      const res = await axios.get("http://3.89.255.32:5000/admin-stats");
 
       if (res.data?.stats) setStats(res.data.stats);
       if (res.data?.users) setUsers(res.data.users);

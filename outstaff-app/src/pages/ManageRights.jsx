@@ -13,7 +13,7 @@ export default function ManageRights() {
   }, []);
 
   const fetchUsers = async () => {
-    const res = await axios.get("http://localhost:5000/all-users-basic");
+    const res = await axios.get("http://3.89.255.32:5000/all-users-basic");
     setUsers(res.data);
   };
 
@@ -26,7 +26,7 @@ export default function ManageRights() {
   const loadPermissions = async (user) => {
     setSelectedUser(user);
     const res = await axios.get(
-      `http://localhost:5000/user-permissions/${user.id}`
+      `http://3.89.255.32:5000/user-permissions/${user.id}`
     );
     setPermissions(res.data);
   };
@@ -83,7 +83,7 @@ export default function ManageRights() {
   };
 
   const savePermissions = async () => {
-    await axios.post("http://localhost:5000/save-permissions", {
+    await axios.post("http://3.89.255.32:5000/save-permissions", {
       userId: selectedUser.id,
       permissions,
     });

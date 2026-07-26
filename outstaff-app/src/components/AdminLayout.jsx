@@ -19,7 +19,7 @@ export default function AdminLayout() {
 
     if (user) {
       try {
-        await fetch("http://localhost:5000/logout", {
+        await fetch("http://3.89.255.32:5000/logout", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

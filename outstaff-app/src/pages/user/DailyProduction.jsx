@@ -20,13 +20,13 @@ export default function DailyProduction() {
   }, []);
 
   const fetchData = async () => {
-    const res = await axios.get("http://localhost:5000/production-list");
+    const res = await axios.get("http://3.89.255.32:5000/production-list");
     setData(res.data);
   };
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this entry?")) {
-      await axios.delete(`http://localhost:5000/delete-production/${id}`);
+      await axios.delete(`http://3.89.255.32:5000/delete-production/${id}`);
       fetchData();
     }
   };

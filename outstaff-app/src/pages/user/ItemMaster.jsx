@@ -44,13 +44,13 @@ export default function ItemMaster() {
   }, []);
 
   const fetchItems = async () => {
-    const res = await axios.get("http://localhost:5000/items");
+    const res = await axios.get("http://3.89.255.32:5000/items");
     setItems(res.data);
   };
 
   const fetchDropdowns = async () => {
-    const g = await axios.get("http://localhost:5000/item-groups");
-    const p = await axios.get("http://localhost:5000/item-processes");
+    const g = await axios.get("http://3.89.255.32:5000/item-groups");
+    const p = await axios.get("http://3.89.255.32:5000/item-processes");
     setGroups(g.data);
     setProcesses(p.data);
   };
@@ -58,11 +58,11 @@ export default function ItemMaster() {
   const handleSave = async () => {
     if (editData) {
       await axios.put(
-        `http://localhost:5000/update-item/${editData.item_id}`,
+        `http://3.89.255.32:5000/update-item/${editData.item_id}`,
         form
       );
     } else {
-      await axios.post("http://localhost:5000/add-item", form);
+      await axios.post("http://3.89.255.32:5000/add-item", form);
     }
     setShowModal(false);
     setEditData(null);
@@ -71,7 +71,7 @@ export default function ItemMaster() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this item?")) {
-      await axios.delete(`http://localhost:5000/delete-item/${id}`);
+      await axios.delete(`http://3.89.255.32:5000/delete-item/${id}`);
       fetchItems();
     }
   };

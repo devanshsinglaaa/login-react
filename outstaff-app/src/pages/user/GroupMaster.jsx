@@ -45,7 +45,7 @@ export default function GroupMaster() {
   }, []);
 
   const fetchGroups = async () => {
-    const res = await axios.get("http://localhost:5000/item-groups-all");
+    const res = await axios.get("http://3.89.255.32:5000/item-groups-all");
     setGroups(res.data);
   };
 
@@ -58,12 +58,12 @@ export default function GroupMaster() {
 
     if (editData) {
       await axios.put(
-        `http://localhost:5000/update-group/${editData.item_group_id}`,
+        `http://3.89.255.32:5000/update-group/${editData.item_group_id}`,
         form
       );
     } else {
       await axios.post(
-        "http://localhost:5000/add-group",
+        "http://3.89.255.32:5000/add-group",
         form
       );
     }
@@ -76,7 +76,7 @@ export default function GroupMaster() {
   const handleDelete = async (id) => {
     if (window.confirm("Delete this group?")) {
       await axios.delete(
-        `http://localhost:5000/delete-group/${id}`
+        `http://3.89.255.32:5000/delete-group/${id}`
       );
       fetchGroups();
     }

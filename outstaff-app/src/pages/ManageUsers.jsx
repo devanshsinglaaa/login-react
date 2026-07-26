@@ -20,7 +20,7 @@ export default function ManageUsers() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/all-users");
+      const res = await axios.get("http://3.89.255.32:5000/all-users");
       setUsers(res.data);
     } catch (err) {
       console.error(err);
@@ -28,14 +28,14 @@ export default function ManageUsers() {
   };
 
   const handleAddUser = async () => {
-    await axios.post("http://localhost:5000/add-user", formData);
+    await axios.post("http://3.89.255.32:5000/add-user", formData);
     resetModal();
     fetchUsers();
   };
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      await axios.delete(`http://localhost:5000/delete-user/${id}`);
+      await axios.delete(`http://3.89.255.32:5000/delete-user/${id}`);
       fetchUsers();
     }
   };
@@ -53,7 +53,7 @@ export default function ManageUsers() {
 
   const handleUpdate = async () => {
     await axios.put(
-      `http://localhost:5000/update-user/${editUser.id}`,
+      `http://3.89.255.32:5000/update-user/${editUser.id}`,
       formData
     );
     resetModal();

@@ -45,7 +45,7 @@ export default function ProductProcess() {
   }, []);
 
   const fetchProcesses = async () => {
-    const res = await axios.get("http://localhost:5000/item-processes-all");
+    const res = await axios.get("http://3.89.255.32:5000/item-processes-all");
     setProcesses(res.data);
   };
 
@@ -58,12 +58,12 @@ export default function ProductProcess() {
 
     if (editData) {
       await axios.put(
-        `http://localhost:5000/update-process/${editData.item_process_id}`,
+        `http://3.89.255.32:5000/update-process/${editData.item_process_id}`,
         form
       );
     } else {
       await axios.post(
-        "http://localhost:5000/add-process",
+        "http://3.89.255.32:5000/add-process",
         form
       );
     }
@@ -76,7 +76,7 @@ export default function ProductProcess() {
   const handleDelete = async (id) => {
     if (window.confirm("Delete this process?")) {
       await axios.delete(
-        `http://localhost:5000/delete-process/${id}`
+        `http://3.89.255.32:5000/delete-process/${id}`
       );
       fetchProcesses();
     }
