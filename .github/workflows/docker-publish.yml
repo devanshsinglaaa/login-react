@@ -1,0 +1,5 @@
+name: cicd_login_react
+
+on:
+  workflow_dispatch:
+
