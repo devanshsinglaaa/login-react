@@ -8,6 +8,8 @@ RUN npm ci
 
 COPY . .
 
+RUN cp .env.example .env
+
 EXPOSE 5000
 
 CMD ["node", "server.js"]
