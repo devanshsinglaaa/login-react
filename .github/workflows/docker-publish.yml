@@ -1,5 +1,34 @@
 name: cicd_login_react
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - cicd_branch
 
+jobs:
+# Goal : To checkout code, test linting and then push to docker hub
+  docker-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Docker login
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build and Push frontend
+        uses: docker/build-push-action@v6
+        with:
+          context: ./outstaff-app
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/login-react-frontend:latest
+
+      - name: Docker Build and Push Backend
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/login-react-backend:latest
